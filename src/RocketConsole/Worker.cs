@@ -24,7 +24,7 @@ namespace RocketConsole
     {
       while (!stoppingToken.IsCancellationRequested)
       {
-        _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+        _logger.LogDebug("Worker running at: {time}", DateTimeOffset.Now);
 
         LoadRockets();
 
