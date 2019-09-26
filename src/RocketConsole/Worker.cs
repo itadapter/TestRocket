@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RocketConsole
 {
-  public class Worker
+  public class Worker : IWorker
   {
     private readonly ILogger<Worker> _logger;
     private readonly IRocketLoader _loader;

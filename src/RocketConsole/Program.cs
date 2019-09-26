@@ -12,8 +12,14 @@ namespace RocketConsole
   class Program
   {
     public static ILogger<Program> m_ProgramLogger;
+    public static IWorker m_Worker;
 
     static async Task Main(string[] args)
+    {
+      await Run();
+    }
+
+    private static async Task Run()
     {
       var services = new ServiceCollection();
       ConfigureServices(services, LogLevel.Trace);
@@ -23,11 +29,14 @@ namespace RocketConsole
         m_ProgramLogger = serviceProvider.GetService<ILogger<Program>>();
         m_WriteMainLogStart(m_ProgramLogger);
 
+        /* if we are interactive we want to welcome user */
         Console.WriteLine(ProgramConstants.INTERACTIVE_STARTUP_MSG);
 
-        /* Do Work */
-        Worker app = serviceProvider.GetService<Worker>();
-        await app.ExecuteAsync(CancellationToken.None);
+        /* Do Work HERE*/
+        m_Worker = serviceProvider.GetService<Worker>();
+        m_ProgramLogger.LogDebug(m_Worker.GetType().FullName);
+        await m_Worker.ExecuteAsync(CancellationToken.None);
+        /* Do Work HERE*/
 
         /* Shut Down */
         m_WriteMainLogEnd(m_ProgramLogger);
@@ -81,7 +90,8 @@ namespace RocketConsole
       {
         Filter = (string category, LogLevel level) =>
         {
-          if (category == "RocketConsole.Worker" && level > LogLevel.Debug) return true;
+          //if (category == "RocketConsole.Worker" && level > LogLevel.Debug) return true;
+          if (category == nameof(m_Worker) && level > LogLevel.Debug) return true;
           return false;
         }
       };
