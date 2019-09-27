@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,15 @@ namespace RocketConsole
     public const string MAIN_START_LOG_DEBUG_MSG = "Debug Mode Start:";
 
     public const string MAIN_END_LOG_DEBUG_MSG = "Debug Mode End:";
+
+    public const LogLevel WORKER_MIN_LOG_LEVEL = LogLevel.Information;
+
+    public const LogLevel PROGRAM_MIN_LOG_LEVEL = LogLevel.Debug;
+
+    public const LogLevel PROGRAM_SYSTEM_MIN_LOG_LEVEL = LogLevel.Warning;
+
+    public const LogLevel PROGRAM_MS_MIN_LOG_LEVEL = LogLevel.Warning;
+
+    public const LogLevel PROGRAM_DEFAULT_MIN_LOG_LEVEL = LogLevel.Warning;
   }
 }
