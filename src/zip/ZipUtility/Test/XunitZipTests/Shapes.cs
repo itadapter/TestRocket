@@ -21,7 +21,7 @@ namespace XunitZipTests
 
     private SingletonShapes()
     {
-      ShapeDto m_NewShapes = JsonConvert.DeserializeObject<ShapeDto>(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, TestConstants.SHAPES_FILE_01_PATH)));
+      ShapeDto m_NewShapes = JsonConvert.DeserializeObject<ShapeDto>(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, TestConstants.SHAPES_FILE_03_PATH)));
       m_Shapes.AddRange(m_NewShapes.Hexagons);
       m_Shapes.AddRange(m_NewShapes.Stars);
       m_Shapes.AddRange(m_NewShapes.Circles);

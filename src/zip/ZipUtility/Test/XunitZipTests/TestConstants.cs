@@ -50,6 +50,10 @@ namespace XunitZipTests
 
     public const string SHAPES_FILE_01_PATH = @"elm\shapes-01.json";
 
+    public const string SHAPES_FILE_02_PATH = @"elm\shapes-02.json";
+
+    public const string SHAPES_FILE_03_PATH = @"elm\shapes-03.json";
+
     /* Sample Shapes Database */
 
     public const string SHAPES_DATA_DIRECTORY = "App_Data";
